@@ -1,3 +1,6 @@
+body{
+  overflow-x: hidden;
+}
 .list-group-item {
   line-height: 2.5;
 }
@@ -91,6 +94,7 @@
   .brand{
       margin: 18px;
   }
+
   h1{
     font-family: 'Modak', cursive;
     font-size: 90px !important;
@@ -101,9 +105,116 @@
         2px -2px 0 rgb(255, 255, 255),
         -2px 2px 0 rgb(255, 255, 255),
         2px 2px 0 rgb(255, 255, 255);
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
   }
-
-  hr{
+  h2{
+    font-family: 'Baloo Bhai', cursive;
+    font-size: 30px !important;
+    color: rgb(255, 255, 255);
+    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.534);
+    letter-spacing: 2px;
+    margin-left: 16%;
+    margin-right: 16%;
+    padding-bottom: 35px;
+  }
+  /* hr{
       background-color: white;
       margin-top: 0px !important;
+  } */
+
+  .plane{
+    max-height: 150px;
   }
+  .car{
+    max-height: 150px;
+  }
+
+h4{
+  color: black;
+  font-family: 'Baloo Bhai', cursive !important;
+    font-size: 40px !important;
+    color: rgb(255, 255, 255);
+    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.534);
+    letter-spacing: 2px;
+    padding-bottom: 35px;
+
+}
+  .whiteContainer{
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.678);
+    padding-top: 80px;
+    padding-bottom: 80px;
+    margin-top: 80px;
+    color: black;
+  }
+
+
+
+
+
+
+
+
+
+  /* footer start */
+
+  section {
+    padding: 60px 0;
+    margin-top: 185px;
+    width: 100vw;
+}
+
+section .section-title {
+    text-align: center;
+    /* color: #1b1b1b; */
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+#footer {
+    background: #161616 !important;
+}
+#footer h5{
+    padding-left: 2px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color:rgb(117, 146, 196);
+}
+#footer a {
+    color: #ffffff;
+    text-decoration: none !important;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+#footer ul.quick-links li{
+    padding: 3px 0;
+    -webkit-transition: .5s all ease;
+    -moz-transition: .5s all ease;
+    transition: .5s all ease;
+}
+#footer ul.quick-links li:hover{
+    padding: 3px 0;
+    margin-left:5px;
+    font-weight:700;
+}
+#footer ul.quick-links li a i{
+    margin-right: 5px;
+}
+#footer ul.quick-links li:hover a i {
+    font-weight: 700;
+}
+
+@media (max-width:767px){
+    #footer h5 {
+    padding-left: 0;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+    }
+    body{
+      overflow-x: hidden;
+    }
+}
+/* footer end */
