@@ -1,3 +1,220 @@
+body{
+  overflow-x: hidden;
+}
 .list-group-item {
   line-height: 2.5;
 }
+
+/* navbar */
+
+#logo {
+    vertical-align:middle;
+}
+.navbar-brand span {
+    font-size:2rem;
+    line-height:1.2;
+    font-weight: 200;
+    display:inline-block;
+    vertical-align:middle;
+    padding:0 0 0 15px;
+}
+.navbar-brand b {
+    display:block;
+    font-size:50%;
+    line-height:1;
+}
+.navbar{
+  background-color: rgb(26, 26, 26);
+  position: fixed !important; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 9999;
+  overflow: hidden;
+  box-shadow: .5px 2px 1px rgb(10, 10, 10);
+}
+.navbar-nav {
+  margin-left:auto;
+}
+
+.centered {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white !important;
+    text-shadow: 2px 2px 2px #0000006c;
+  }
+  /* end navbar */
+  body{
+    background-image: url("../img/bg1.jpg");
+    background-attachment: fixed;
+    min-height: 650px;
+    width: 100vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.boxes{
+    background-color: rgba(0, 0, 0, 0.657);
+    color: azure;
+    border-radius: 15px;
+    padding: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.548);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding-left: -325px;
+    padding-right: -325px;
+}
+
+.type{
+    background-color: rgba(0, 0, 0, 0);
+    border: 3px dotted rgb(10, 196, 199);
+    border-radius: 25px;
+    margin-top: 15px;
+    padding: 5px;
+}
+
+::placeholder { 
+    color: rgb(235, 235, 235);
+    opacity: 1; 
+    text-align:center;
+    margin-left: 10px;
+  }
+
+
+  .miniHead{
+       background-color: rgba(0, 0, 0, 0.657);
+    color: azure;
+    border-radius: 15px;
+    padding: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.431);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  }
+  .brand{
+      margin: 18px;
+  }
+
+  h1{
+    font-family: 'Modak', cursive;
+    font-size: 90px !important;
+    color: rgb(10, 196, 199);
+    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.534);
+    text-shadow:
+        -2px -2px 0 rgb(255, 255, 255),
+        2px -2px 0 rgb(255, 255, 255),
+        -2px 2px 0 rgb(255, 255, 255),
+        2px 2px 0 rgb(255, 255, 255);
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+  }
+  h2{
+    font-family: 'Baloo Bhai', cursive;
+    font-size: 30px !important;
+    color: rgb(255, 255, 255);
+    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.534);
+    letter-spacing: 2px;
+    margin-left: 16%;
+    margin-right: 16%;
+    padding-bottom: 35px;
+  }
+  /* hr{
+      background-color: white;
+      margin-top: 0px !important;
+  } */
+
+  .plane{
+    max-height: 150px;
+  }
+  .car{
+    max-height: 150px;
+  }
+
+h4{
+  color: black;
+  font-family: 'Baloo Bhai', cursive !important;
+    font-size: 40px !important;
+    color: rgb(255, 255, 255);
+    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.534);
+    letter-spacing: 2px;
+    padding-bottom: 35px;
+
+}
+  .whiteContainer{
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.678);
+    padding-top: 80px;
+    padding-bottom: 80px;
+    margin-top: 80px;
+    color: black;
+  }
+
+
+
+
+
+
+
+
+
+  /* footer start */
+
+  section {
+    padding: 60px 0;
+    margin-top: 185px;
+    width: 100vw;
+}
+
+section .section-title {
+    text-align: center;
+    /* color: #1b1b1b; */
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+#footer {
+    background: #161616 !important;
+}
+#footer h5{
+    padding-left: 2px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color:rgb(117, 146, 196);
+}
+#footer a {
+    color: #ffffff;
+    text-decoration: none !important;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+#footer ul.quick-links li{
+    padding: 3px 0;
+    -webkit-transition: .5s all ease;
+    -moz-transition: .5s all ease;
+    transition: .5s all ease;
+}
+#footer ul.quick-links li:hover{
+    padding: 3px 0;
+    margin-left:5px;
+    font-weight:700;
+}
+#footer ul.quick-links li a i{
+    margin-right: 5px;
+}
+#footer ul.quick-links li:hover a i {
+    font-weight: 700;
+}
+
+@media (max-width:767px){
+    #footer h5 {
+    padding-left: 0;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+    }
+    body{
+      overflow-x: hidden;
+    }
+}
+/* footer end */
