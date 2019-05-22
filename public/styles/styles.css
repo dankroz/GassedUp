@@ -126,12 +126,15 @@
     margin-right: 16%;
     padding-bottom: 35px;
   }
+  .cont1{
+      height: 95vh;
+  }
   /* hr{
       background-color: white;
       margin-top: 0px !important;
   } */
 
-  .plane{
+  /* .plane{
     max-height:v75px;
     margin-right: 1px;
   }
@@ -145,7 +148,8 @@
     border-radius: 15px;
     width: 100%;
     
-  }
+  } */
+  
   .box{
     height: 200px;
     background-color: rgb(0, 0, 0);
@@ -154,7 +158,6 @@
     border-radius: 15px;
     padding: 10px;
   }
-
 h4{
   color: rgb(255, 255, 255);
     font-size:30px !important;
@@ -182,18 +185,15 @@ h5{
       /* line-height: 0px !important; */
   
   }
-  .whiteContainer{
+  /* .whiteContainer{
     left: 0;
     width: 70vw;
     height: 100%;
     background-color: rgba(22, 22, 22, 0.774);
-    /* padding-top: 20px;
-    padding-bottom: 20px; */
     margin-top: 80px;
     color: black;
-    /* box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.534); */
     border-radius: 15px;
-  }
+  } */
 
   /* footer start */
 
@@ -224,7 +224,10 @@ section .section-title {
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
 }
-
+.input{
+    padding-left: 5px;
+    padding-right: 5px;
+}
 #footer ul.quick-links li{
     padding: 3px 0;
     -webkit-transition: .5s all ease;
@@ -254,3 +257,54 @@ section .section-title {
     }
 }
 /* footer end */
+
+/* nikki style */
+	#right-panel {
+			font-family: 'Roboto','sans-serif';
+			line-height: 30px;
+			padding-left: 10px;
+		  }
+		  #right-panel select, #right-panel input {
+			font-size: 15px;
+		  }
+		  #right-panel select {
+			width: 100%;
+		  }
+		  #right-panel i {
+			font-size: 12px;
+		  }
+		  html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		  }
+		  #map {
+			height: 100%;
+			float: left;
+			width: 70%;
+            height: 70%;
+            margin-right: 20px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.096);
+    border-radius: 15px;
+    margin-left: 20px;
+		  }
+		  #right-panel {
+			margin: 20px;
+			border-width: 2px;
+			width: 20%;
+			height: 400px;
+			float: left;
+			text-align: left;
+			padding-top: 0;
+		  }
+		  #directions-panel {
+			margin-top: 10px;
+			background-color: rgba(0, 0, 0, 0.603);
+			padding: 10px;
+            overflow: scroll;
+            height: 200px;
+            padding-left: 15px;
+            margin-right: 20px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.096);
+    border-radius: 15px;
+		  }
