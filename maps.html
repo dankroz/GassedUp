@@ -118,6 +118,7 @@
                         var distance = route.legs[i].distance.text;
                         // console.log(distance);
                         summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+                        console.log(route.legs[i])
                     }
                 } else {
                     window.alert('Directions request failed due to ' + status);
@@ -126,7 +127,7 @@
 
         }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=APIKEYGOESHERE&callback=initMap">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp-w7v8UE9I4dyGeMSrf_-f1R0wrdm9vI&callback=initMap">
     </script>
 </body>
 
