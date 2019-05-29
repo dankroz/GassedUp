@@ -2,15 +2,17 @@
   "development": {
     "username": "root",
     "password": "Baddog28!",
-    "database": "exampledb",
+    "database": "passport_demo",
     "host": "localhost",
+    "port": 3306,
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Baddog28!",
-    "database": "testdb",
+    "password": null,
+    "database": "database_test",
     "host": "localhost",
+    "port": 3306,
     "dialect": "mysql",
     "logging": false
   },
