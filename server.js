@@ -2,15 +2,27 @@ require("./node_modules/dotenv/lib/main").config();
 var express = require("./node_modules/express");
 var exphbs = require("express-handlebars");
 
+// Requiring Passport items
+var bodyParser = require("body-parser");
+var session = require("express-session");
+var passport = require("./config/passport");
+
 var db = require("./models");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static("public"));
+
+// Keeping track of login status
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
 require("./routes/apiRoutes")(app);
