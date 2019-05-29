@@ -21,56 +21,120 @@
 		</div>
 	</nav>
 	<br><br><br>
-	<div class="container">
+	<div class="container cont1">
 		<header class="header">
 			<div class="col-sm-12 text-center mt-5 mb-3">
 				<h1>Gassed Up</h1>
 				<h2>Comparing travel costs for driving and flying to any destination.</h2>
 			</div>
 		</header>
-		<div class="container">
-			<div class="row mx-auto d-flex justify-content-center">
-				<div class=" miniHead col-sm-6 col-md-6 col-lg-3 push pt-4 pb-4">
-					<h3 class="mx-auto d-flex justify-content-center">Enter New Trip</h3>
-					<form class="new-input">
-						<div class="form-group input-field">
-							<input class="type mx-auto d-flex justify-content-center text-white" type="text" id="start" name="name"
-							 placeholder="Starting Point">
-							<input class="type mx-auto d-flex justify-content-center text-white" type="text" id="end" name="name"
-							 placeholder="Destination">
-							<input class="type mx-auto d-flex justify-content-center text-white" type="text" id="mileage" name="name"
-							 placeholder="Car MPG">
+		<div class="container mx-auto d-flex justify-content-center">
+			<div class="miniHead col-lg-6 col-md-10 col-sm-12">
+				<div class="row">
+					<div class="mt-4 mx-auto d-flex justify-content-center">
+						<div class="pr-2">
+						<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name" id="start"
+						 placeholder="City From (ex. Boston)">
 						</div>
-						<div class="mx-auto d-flex justify-content-center">
-							<button class="btn btn-info" type="submit">Search</button></div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<br><br><br>
-	</div>
-	<div class="whiteContainer mx-auto d-flex justify-content-center">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 d-flex flex-wrap align-items-center">
-					<img class="map" src="./img/map.jpg">
-				</div>
-				<div class="col-lg-6 col-md-12 text-center mt-5">
-					<div class="box">
-						<img src="./img/car-icon.png" class="img-fluid pt-4 mt-3" width="130">
-						<h5 class="lead mt-0 text-black">Driving Cost $</h5>
-					</div>
-						<br>
-					<div class="box mb-5">
-						<img src="./img/plane-icon.png" class="img-fluid mt-2" width="130">
-						<h5 class="lead mt-0 text-black">Flying Cost $</h5>
+						 <div class="pl-2">
+						<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name" id="end" placeholder="City To (ex. Miami)">
+						</div>
 					</div>
 				</div>
+				<div class="row">
+					<div class="mx-auto d-flex justify-content-center">
+						<div class="pr-2">
+						<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name" id="startDate"
+						 placeholder="Start Date (DD/MM/YYYY)">
+						</div>
+						 <div class="pl-2">
+						<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name" id="endDate"
+						 placeholder="End Date (DD/MM/YYYY)">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="mx-auto d-flex justify-content-center">
+						<div class="pr-2">
+						<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name" id="passengers"
+						 placeholder="Passengers">
+						</div>
+						<div class="pl-2">
+						<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name" id="mpg" placeholder="Car MPG">
+						</div>
+					</div>
+				</div>
+				<input class="mx-auto d-flex justify-content-center btn btn-info mt-4 mb-4" type="submit" id="submit">
 			</div>
 		</div>
 	</div>
-</body>
+	<br><br><br>
+	</div>
 
+	<div id="map"></div>
+	<div id="directions-panel"></div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+
+		var distance;
+
+		function initMap() {
+			var directionsService = new google.maps.DirectionsService;
+			var directionsDisplay = new google.maps.DirectionsRenderer;
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 6,
+				center: { lat: 41.85, lng: -87.65 }
+			});
+			directionsDisplay.setMap(map);
+			document.getElementById('submit').addEventListener('click', function () {
+				calculateAndDisplayRoute(directionsService, directionsDisplay);
+			});
+		}
+		function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+			var waypts = [];
+			var checkboxArray = document.getElementsByClassName('waypoints');
+			for (let i = 0; i < checkboxArray.length; i++) {
+				waypts.push({
+					location: $(checkboxArray[i]).val(),
+					stopover: true
+				});
+			}
+
+			directionsService.route({
+				origin: document.getElementById('start').value,
+				destination: document.getElementById('end').value,
+				waypoints: waypts,
+				optimizeWaypoints: true,
+				travelMode: 'DRIVING'
+			}, function (response, status) {
+				if (status === 'OK') {
+					directionsDisplay.setDirections(response);
+					var route = response.routes[0];
+					var summaryPanel = document.getElementById('directions-panel');
+					summaryPanel.innerHTML = '';
+					// For each route, display summary information.
+					for (var i = 0; i < route.legs.length; i++) {
+						var routeSegment = i + 1;
+						summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+							'</b><br>';
+						summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+						summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+						var distance = route.legs[i].distance.text;
+						// console.log(distance);
+						summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+					}
+				} else {
+					window.alert('Directions request failed due to ' + status);
+				}
+			});
+
+		}
+	</script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp-w7v8UE9I4dyGeMSrf_-f1R0wrdm9vI&callback=initMap">
+	</script>
+</body>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <!-- start footer -->
 <section id="footer">
 	<div class="container">
@@ -118,7 +182,33 @@
 	</div>
 </section>
 <!-- end footer -->
-<script src="https://code.jquery.com/jquery.js"></script>
+<!-- <script src="https://code.jquery.com/jquery.js"></script> -->
+<script src=https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../models/index.js"></script>
 <script src="/js/flightsAPI.js"></script>
 </html>
+
+</html>
+
+
+<!-- <div class="whiteContainer mx-auto d-flex justify-content-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 d-flex flex-wrap align-items-center">
+					<img class="map" src="./img/map.jpg">
+				</div>
+				<div class="col-lg-6 col-md-12 text-center mt-5">
+					<div class="box">
+						<img src="./img/car-icon.png" class="img-fluid pt-4 mt-3" width="130">
+						<h5 class="lead mt-0 text-black">Driving Cost $</h5>
+					</div>
+						<br>
+					<div class="box mb-5">
+						<img src="./img/plane-icon.png" class="img-fluid mt-2" width="130">
+						<h5 class="lead mt-0 text-black">Flying Cost $</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
