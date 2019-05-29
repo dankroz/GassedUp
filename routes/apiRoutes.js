@@ -60,7 +60,6 @@ module.exports = function (app) {
 
 
   app.post("/api/tolls", function (req) {
-    console.log(req.body);
     var url = "https://dev.tollguru.com/beta00/calc/here"
     var data = {
       "from": {
@@ -70,7 +69,7 @@ module.exports = function (app) {
         "address": req.body.end
       }
     };
-    var headers = { headers: { "x-api-key": "IOtM9YQrTQcKwsz9bffbalk65zx0lJo8X6tHmUW7" } };
+    var headers = { headers: { "x-api-key": req.body.tollkey } };
     var cost = 0;
     axios.post(url, data, headers).then(function (response) {
       for (var x = 0; x < response.data.routes[0].tolls.length; x++) {

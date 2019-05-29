@@ -119,16 +119,18 @@ $(document).ready(function() {
     console.log("hello");
     var trip = {
       start: $("#start").val().trim(),
-      end: $("#end").val().trim()
+      end: $("#end").val().trim(),
+      tollkey: config.tollkey
     };
     
-    calcTolls(trip.start, trip.end);
+    calcTolls(trip.start, trip.end, trip.tollkey);
   });
 
-  function calcTolls(start, end) {
+  function calcTolls(start, end, tollkey) {
     $.post("/api/tolls", {
       start: start,
-      end: end
+      end: end,
+      tollkey: tollkey
     });
   }
   // eslint-disable-next-line prettier/prettier
