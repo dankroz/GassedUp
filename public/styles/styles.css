@@ -1,9 +1,7 @@
 .list-group-item {
   line-height: 2.5;
 }
-
 /* navbar */
-
 #logo {
     vertical-align:middle;
 }
@@ -37,7 +35,6 @@
 .navbar-nav {
   margin-left:auto;
 }
-
 /* .centered {
     position: absolute;
     top: 45%;
@@ -56,9 +53,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     overflow-x: hidden;
-    padding-top: 40px;
 }
-
 .boxes{
     background-color: rgba(0, 0, 0, 0.657);
     color: rgb(71, 71, 71);
@@ -69,23 +64,20 @@
     padding-left: -325px;
     padding-right: -325px;
 }
-
-.type{
-    background-color: rgba(0, 0, 0, 0);
-    border: 3px dotted rgb(10, 196, 199);
-    border-radius: 25px;
-    margin-top: 15px;
-    padding: 5px;
+.form-control{
+    background-color: rgba(0, 0, 0, 0)!important;
+    border: 2px solid rgb(255, 255, 255)!important;
+    border-radius: 5px!important;
+    margin-top: 15px!important;
+    color: white !important;
+    /* padding: 5px; */
 }
-
 ::placeholder { 
-    color: rgb(235, 235, 235);
+    color: rgb(235, 235, 235)!important;
     opacity: 1; 
     text-align:center;
     margin-left: 10px;
   }
-
-
   .miniHead{
        background-color: rgba(0, 0, 0, 0.657);
     color: azure;
@@ -93,7 +85,6 @@
     padding: 10px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.431);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
   }
   .brand{
       margin: 18px;
@@ -102,19 +93,13 @@
         -webkit-text-fill-color: transparent;
         text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.137);
   }
-
   h1{
-    font-family: 'Modak', cursive;
+    font-family: 'Quicksand', sans-serif;
     font-size: 90px !important;
-    color: rgb(10, 196, 199);
-    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.534);
-    text-shadow:
-        -2px -2px 0 rgb(255, 255, 255),
-        2px -2px 0 rgb(255, 255, 255),
-        -2px 2px 0 rgb(255, 255, 255),
-        2px 2px 0 rgb(255, 255, 255);
+    text-shadow: .5px .5px 2px rgba(0, 0, 0, 0.226);
     margin-bottom: 0px !important;
-    padding-bottom: 0px !important;
+    padding-bottom: 14px !important;
+    /* margin-top: 60px!important; */
   }
   h2{
     font-family: 'Baloo Bhai', cursive;
@@ -124,37 +109,18 @@
     letter-spacing: 2px;
     margin-left: 16%;
     margin-right: 16%;
-    padding-bottom: 35px;
+    margin-bottom: 65px!important;
   }
-  .cont1{
-      height: 95vh;
-  }
-  /* hr{
-      background-color: white;
-      margin-top: 0px !important;
-  } */
-
-  /* .plane{
-    max-height:v75px;
-    margin-right: 1px;
-  }
-  .car{
-    max-height: 35px;
-    margin-top: 10px;
-    margin-right: 6px;
-  }
-  .map{
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.24);
-    border-radius: 15px;
-    width: 100%;
-    
-  } */
   
+  h3{
+    font-family: 'Quicksand', sans-serif;
+    text-shadow:1px 1px 2px rgba(0, 0, 0, 0.226);
+  }
   .box{
     height: 200px;
     background-color: rgb(0, 0, 0);
     color: black;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.096);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.192);
     border-radius: 15px;
     padding: 10px;
   }
@@ -164,13 +130,9 @@ h4{
     background: -webkit-linear-gradient(rgb(16, 208, 233), rgb(13, 240, 221));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-    /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.534); */
     letter-spacing: 2px;
     padding-bottom: 5px;
     padding-top: 20px;
-    /* line-height: 0px !important;
-    overflow: show; */
-
 }
 h5{
     color: rgb(255, 255, 255);
@@ -185,6 +147,22 @@ h5{
       /* line-height: 0px !important; */
   
   }
+  .googleMap{
+      margin-top: 100px;
+      margin-bottom: 100px;
+  }
+  .tab-content{
+      width: 75%;
+    background-color: rgba(0, 0, 0, 0.452);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.267);
+    border-radius: 15px;
+    padding: 40px;
+    margin-bottom: 230px;
+    margin-top: 160px;
+  }
+  .bottom{
+      margin-bottom: 200px !important;
+  }
   /* .whiteContainer{
     left: 0;
     width: 70vw;
@@ -194,15 +172,12 @@ h5{
     color: black;
     border-radius: 15px;
   } */
-
   /* footer start */
-
   section {
     padding: 60px 0;
     margin-top: 185px;
     width: 100vw;
 }
-
 section .section-title {
     text-align: center;
     /* color: #1b1b1b; */
@@ -245,7 +220,6 @@ section .section-title {
 #footer ul.quick-links li:hover a i {
     font-weight: 700;
 }
-
 @media (max-width:767px){
     #footer h5 {
     padding-left: 0;
@@ -257,59 +231,53 @@ section .section-title {
     }
 }
 /* footer end */
-
-/* logout display */
-#logout {
-  display: block;
-}
-
 /* nikki style */
-	#right-panel {
-			font-family: 'Roboto','sans-serif';
-			line-height: 30px;
-			padding-left: 10px;
-		  }
-		  #right-panel select, #right-panel input {
-			font-size: 15px;
-		  }
-		  #right-panel select {
-			width: 100%;
-		  }
-		  #right-panel i {
-			font-size: 12px;
-		  }
-		  html, body {
-			height: 100%;
-			margin: 0;
-			padding: 0;
-		  }
-		  #map {
-			height: 100%;
-			float: left;
-			width: 70%;
+    #right-panel {
+            font-family: 'Roboto','sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+          }
+          #right-panel select, #right-panel input {
+            font-size: 15px;
+          }
+          #right-panel select {
+            width: 100%;
+          }
+          #right-panel i {
+            font-size: 12px;
+          }
+          html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+          }
+          #map {
+            height: 100%;
+            float: left;
+            width: 70%;
             height: 70%;
             margin-right: 20px;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.096);
     border-radius: 15px;
     margin-left: 20px;
-		  }
-		  #right-panel {
-			margin: 20px;
-			border-width: 2px;
-			width: 20%;
-			height: 400px;
-			float: left;
-			text-align: left;
-			padding-top: 0;
-		  }
-		  #directions-panel {
-			margin-top: 10px;
-			background-color: rgba(0, 0, 0, 0.603);
-			padding: 10px;
+          }
+          #right-panel {
+            margin: 20px;
+            border-width: 2px;
+            width: 20%;
+            height: 400px;
+            float: left;
+            text-align: left;
+            padding-top: 0;
+          }
+          #directions-panel {
+            margin-top: 10px;
+            background-color: rgba(0, 0, 0, 0.603);
+            padding: 10px;
             overflow: scroll;
             height: 200px;
             padding-left: 15px;
             margin-right: 20px;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.096);
     border-radius: 15px;
-		  }
+          }
