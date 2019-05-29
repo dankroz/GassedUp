@@ -9,7 +9,7 @@
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "Baddog28!",
     "database": "database_test",
     "host": "localhost",
     "port": 3306,

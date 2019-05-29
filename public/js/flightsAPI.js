@@ -13,7 +13,7 @@ $(document).on("click", ".btn", function () {
     var passengers = $("#passengers").val();
     var mpg = $("#mpg").val();
     // var cityCodeAPI = "dd90a1cf-0df9-40bd-a48b-072177bf02a8"
-    var code = config.flightkey
+    var code = "c57aa9-366c8a"
     var startCityCodeURL = "http://aviation-edge.com/v2/public/autocomplete?key=" + code + "&city=" + start
     var endCityCodeURL = "http://aviation-edge.com/v2/public/autocomplete?key=" + code + "&city=" + end
 
