@@ -5,11 +5,13 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="/styles/styles.css" type="text/css" />
 	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="../models/index.js"></script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	 crossorigin="anonymous">
+	<script src="js/config.js"></script>
+	<script src="js/index.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<title>Gassed Up</title>
 </head>
 
@@ -18,7 +20,8 @@
 		<a class="navbar-brand pl-3" href="#"> <img src="./img/logo-color.png" height="50">
 			<span class="brand">Gassed Up</span></a>
 		<ul class="navbar-nav">
-			<li class="nav-item pr-2"><a class="nav-link" href="/">Sign In</a></li>
+			<li class="nav-item pr-2"><a class="nav-link" id="signin" href="/login">Sign In</a></li>
+			<li class="nav-item pr-2" ><a class="nav-link" id="logout" href="/logout">Log Out</a></li>	
 		</ul>
 		</div>
 	</nav>
@@ -35,34 +38,36 @@
 				<div class="row">
 					<div class="mt-4 mx-auto d-flex justify-content-center">
 						<div class="pr-2">
-						<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name" id="start"
-						 placeholder="Starting Point">
-						</div>
-						 <div class="pl-2">
-						<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name" id="end" placeholder="Destination">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="mx-auto d-flex justify-content-center">
-						<div class="pr-2">
-						<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name" id="startDate"
-						 placeholder="Start Date">
-						</div>
-						 <div class="pl-2">
-						<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name" id="endDate"
-						 placeholder="End Date">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="mx-auto d-flex justify-content-center">
-						<div class="pr-2">
-						<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name" id="passengers"
-						 placeholder="Passengers">
+							<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name"
+								id="start" placeholder="Starting Point">
 						</div>
 						<div class="pl-2">
-						<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name" id="mpg" placeholder="Car MPG">
+							<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name"
+								id="end" placeholder="Destination">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="mx-auto d-flex justify-content-center">
+						<div class="pr-2">
+							<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name"
+								id="startDate" placeholder="Start Date">
+						</div>
+						<div class="pl-2">
+							<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name"
+								id="endDate" placeholder="End Date">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="mx-auto d-flex justify-content-center">
+						<div class="pr-2">
+							<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name"
+								id="passengers" placeholder="Passengers">
+						</div>
+						<div class="pl-2">
+							<input class="type mx-auto d-flex justify-content-center text-white" type="text" name="name"
+								id="mpg" placeholder="Car MPG">
 						</div>
 					</div>
 				</div>
@@ -133,8 +138,9 @@
 
 		}
 	</script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp-w7v8UE9I4dyGeMSrf_-f1R0wrdm9vI&callback=initMap">
-	</script>
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=">
+		</script>
 </body>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <!-- start footer -->
@@ -176,9 +182,11 @@
 	<br></br> <br></br>
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
-			<p><u><a href="#">Gassed Up</a></u> website uses vectors and images that are free for public use. All material is
+			<p><u><a href="#">Gassed Up</a></u> website uses vectors and images that are free for public use. All
+				material is
 				sourced from public datasets.</p>
-			<p class="h6">&copy All Rights Reserved.<a class="text-green ml-2" href="#" target="_blank">Gassed Up</a></p>
+			<p class="h6">&copy All Rights Reserved.<a class="text-green ml-2" href="#" target="_blank">Gassed Up</a>
+			</p>
 		</div>
 	</div>
 	</div>

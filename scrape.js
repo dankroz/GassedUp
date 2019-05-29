@@ -1,6 +1,6 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-const url = "https://gasprices.aaa.com/state-gas-price-averages/";
+var axios = require('axios');
+var cheerio = require('cheerio');
+var url = "https://gasprices.aaa.com/state-gas-price-averages/";
 
 
 // getting the request to the AAA website using Axios for response data

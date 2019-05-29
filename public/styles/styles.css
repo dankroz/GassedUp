@@ -258,6 +258,11 @@ section .section-title {
 }
 /* footer end */
 
+/* logout display */
+#logout {
+  display: block;
+}
+
 /* nikki style */
 	#right-panel {
 			font-family: 'Roboto','sans-serif';
