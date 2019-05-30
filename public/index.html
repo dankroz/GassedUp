@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="../models/index.js"></script>
+	<script src="js/flightsAPI.js"></script>
+	<script src="js/index.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-     crossorigin="anonymous">
+	 crossorigin="anonymous">
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
@@ -17,7 +19,8 @@
         <a class="navbar-brand pl-3" href="#"> <img src="./img/logo-color.png" height="50">
             <span class="brand">Gassed Up</span></a>
         <ul class="navbar-nav">
-            <li class="nav-item pr-2"><a class="nav-link" href="/">Sign In</a></li>
+			<li class="nav-item pr-2"><a class="nav-link" id="signin" href="/login">Sign In</a></li>
+			<li class="nav-item pr-2" ><a class="nav-link" id="logout" href="/logout">Log Out</a></li>
         </ul>
         </div>
     </nav>
@@ -34,12 +37,12 @@
                             </div>
                     <div class="col-md-12 col-lg-4">
                         <div class="input-field">
-                            <input type="text" class="form-control" id="start" placeholder="Traveling From" />
+                            <input type="text" class="form-control" id="start" placeholder="City Traveling From" />
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-4">
                         <div class="input-field">
-                            <input type="text" class="form-control" id="end" placeholder="Traveling To" />
+                            <input type="text" class="form-control" id="end" placeholder="City Traveling To" />
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-4">
@@ -132,7 +135,7 @@
             });
         }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=APIKEYHERE&callback=initMap">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp-w7v8UE9I4dyGeMSrf_-f1R0wrdm9vI&callback=initMap">
     </script>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>

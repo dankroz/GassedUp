@@ -1,6 +1,5 @@
 require("./node_modules/dotenv/lib/main").config();
 var express = require("./node_modules/express");
-var exphbs = require("express-handlebars");
 
 // Requiring Passport items
 var bodyParser = require("body-parser");

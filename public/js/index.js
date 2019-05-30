@@ -100,10 +100,10 @@
 // $submitBtn.on("click", handleFormSubmit);
 // $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
-$(document).ready(function() {
+$(document).ready(function () {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
-  $.get("/api/user_data").then(function(data) {
+  $.get("/api/user_data").then(function (data) {
     if (data.email !== "undefined") {
       $("#signin").text(data.email);
       // $("#logout").style.display === "block";
@@ -112,17 +112,17 @@ $(document).ready(function() {
       console.log("nobody logged in");
     }
   });
-  
- 
-  $("#submit").click(function(event) {
+
+
+  $("#submit").click(function (event) {
     event.preventDefault();
     console.log("hello");
     var trip = {
       start: $("#start").val().trim(),
       end: $("#end").val().trim(),
-      tollkey: config.tollkey
+      tollkey: "4jtthb2Nyu8jqkhzM1dXy3SIu3wnefCj2f1OuPEF"
     };
-    
+
     calcTolls(trip.start, trip.end, trip.tollkey);
   });
 
@@ -131,6 +131,14 @@ $(document).ready(function() {
       start: start,
       end: end,
       tollkey: tollkey
+    }).then(function (res) {
+      //   $.get("/api/tolls").then(function(data) {
+      //   console.log(data.cost);
+      //   $("#directions-panel").append(data.cost);
+      // });
+      console.log("frontend" + res.cost);
+      $("#directions-panel").append("<p>Total Toll Cost: $" + parseInt(res.cost) + "</p>");
+
     });
   }
   // eslint-disable-next-line prettier/prettier

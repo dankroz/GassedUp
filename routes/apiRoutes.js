@@ -59,7 +59,7 @@ module.exports = function (app) {
   });
 
 
-  app.post("/api/tolls", function (req) {
+  app.post("/api/tolls", function (req, res) {
     var url = "https://dev.tollguru.com/beta00/calc/here"
     var data = {
       "from": {
@@ -90,6 +90,10 @@ module.exports = function (app) {
         }
       }
       console.log(cost);
+
+      res.json({
+        cost: cost
+      });
     });
 
   });
