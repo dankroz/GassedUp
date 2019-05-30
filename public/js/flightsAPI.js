@@ -4,7 +4,7 @@
 // module.exports = function(app) {
 //   // Load index page
 //   app.get("/", function(req, res) {
-$(document).on("click", ".btn", function () {
+$(document).on("click", "#submit", function () {
     console.log(axios);
     var start = $("#start").val();
     var end = $("#end").val();
