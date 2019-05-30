@@ -66,7 +66,7 @@
 }
 .form-control{
     background-color: rgba(0, 0, 0, 0)!important;
-    border: 2px solid rgb(255, 255, 255)!important;
+    border: 2px solid rgba(255, 255, 255, 0.712)!important;
     border-radius: 5px!important;
     margin-top: 15px!important;
     color: white !important;
@@ -75,7 +75,7 @@
 ::placeholder { 
     color: rgb(235, 235, 235)!important;
     opacity: 1; 
-    text-align:center;
+    /* text-align:center; */
     margin-left: 10px;
   }
   .miniHead{
@@ -95,10 +95,11 @@
   }
   h1{
     font-family: 'Quicksand', sans-serif;
-    font-size: 90px !important;
+    font-size: 600% !important;
     text-shadow: .5px .5px 2px rgba(0, 0, 0, 0.226);
     margin-bottom: 0px !important;
     padding-bottom: 14px !important;
+    
     /* margin-top: 60px!important; */
   }
   h2{
@@ -116,14 +117,14 @@
     font-family: 'Quicksand', sans-serif;
     text-shadow:1px 1px 2px rgba(0, 0, 0, 0.226);
   }
-  .box{
+  /* .box{
     height: 200px;
     background-color: rgb(0, 0, 0);
     color: black;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.192);
     border-radius: 15px;
     padding: 10px;
-  }
+  } */
 h4{
   color: rgb(255, 255, 255);
     font-size:30px !important;
@@ -152,8 +153,8 @@ h5{
       margin-bottom: 100px;
   }
   .tab-content{
-      width: 75%;
-    background-color: rgba(0, 0, 0, 0.452);
+      width: 85%;
+    background-color: rgba(0, 0, 0, 0.664);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.267);
     border-radius: 15px;
     padding: 40px;
@@ -228,6 +229,19 @@ section .section-title {
     }
     body{
       overflow-x: hidden;
+    }
+    h1{
+      font-family: 'Quicksand', sans-serif;
+      font-size: 400% !important;
+      text-shadow: .5px .5px 2px rgba(0, 0, 0, 0.226);
+      margin-bottom: 0px !important;
+      padding-bottom: 14px !important;
+      /* margin-top: 60px!important; */
+    }
+    h3{
+      font-family: 'Quicksand', sans-serif;
+      text-shadow:1px 1px 2px rgba(0, 0, 0, 0.226);
+      font-size: 1.4rem !important;
     }
 }
 /* footer end */
