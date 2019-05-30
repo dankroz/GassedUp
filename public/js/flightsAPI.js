@@ -51,6 +51,9 @@ $(document).on("click", "#submit", function () {
             });
         })
     })
+    $('html, body').animate({
+        scrollTop: $("#map").offset().top
+    }, 2000);
 })
 
 

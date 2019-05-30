@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 .list-group-item {
   line-height: 2.5;
 }
