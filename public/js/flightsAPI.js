@@ -52,8 +52,8 @@ $(document).on("click", "#submit", function () {
         })
     })
     $('html, body').animate({
-        scrollTop: $("#map").offset().top
-    }, 2000);
+        scrollTop: $("#divBreak").offset().top
+    }, 3000);
 })
 
 
