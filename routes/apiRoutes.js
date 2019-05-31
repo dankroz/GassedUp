@@ -1,49 +1,18 @@
-/* eslint-disable prettier/prettier */
-// var db = require("../models");
-
-// module.exports = function(app) {
-//   // Get all examples
-//   app.get("/api/examples", function(req, res) {
-//     db.Example.findAll({}).then(function(dbExamples) {
-//       res.json(dbExamples);
-//     });
-//   });
-
-//   // Create a new example
-//   app.post("/api/examples", function(req, res) {
-//     db.Example.create(req.body).then(function(dbExample) {
-//       res.json(dbExample);
-//     });
-//   });
-
-//   // Delete an example by id
-//   app.delete("/api/examples/:id", function(req, res) {
-//     db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-//       res.json(dbExample);
-//     });
-//   });
-// };
-
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
 var axios = require("axios");
+var scraper = require("../scrape");
 //
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // eslint-disable-next-line prettier/prettier
   app.post("/api/login", passport.authenticate("local"), function (req, res) {
-    // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
-    // So we're sending the user back the route to the members page because the redirect will happen on the front end
-    // They won't get this or even be able to access this page if they aren't authed
     // eslint-disable-next-line prettier/prettier
     // eslint-disable-next-line indent
     res.json("/");
   });
-  //
-  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
-  // otherwise send back an error
+
   app.post("/api/signup", function (req, res) {
     console.log(req.body);
     db.User.create({
@@ -58,9 +27,16 @@ module.exports = function (app) {
     });
   });
 
+  app.post("/api/distance", function(req, res) {
+    var distance = req.body.distance;
+    res.json({
+      distance: distance
+    })
+  });
+
 
   app.post("/api/tolls", function (req, res) {
-    var url = "https://dev.tollguru.com/beta00/calc/here"
+    var url = "https://dev.tollguru.com/beta00/calc/gmaps"
     var data = {
       "from": {
         "address": req.body.start
@@ -71,29 +47,67 @@ module.exports = function (app) {
     };
     var headers = { headers: { "x-api-key": req.body.tollkey } };
     var cost = 0;
+    const states = [];
     axios.post(url, data, headers).then(function (response) {
+
       for (var x = 0; x < response.data.routes[0].tolls.length; x++) {
+
         var keys = Object.keys(response.data.routes[0].tolls[x]);
         var values = Object.values(response.data.routes[0].tolls[x]);
+
         if (String(values[10]) === "false" && String(keys[10] === "cashCost")) {
-          // console.log(values[11]);
           cost = values[11] + cost;
-          // console.log(cost);
+          states.push(values[5])
+
         }
         if (String(keys[0]) === "type") {
           cost = values[4] + cost;
-          // console.log(cost);
+          states.push(values[14].state)
+
         }
         else {
           cost = values[10] + cost;
-          // console.log(cost);
+          states.push(values[5])
         }
       }
-      console.log(cost);
+      console.log("Tolls cost " + cost);
+      var finalstates = [...new Set(states)];
+      
+      // Getting gas data from states with tolls
+      scraper.getData().then((gasObj) => {
+        var prices = []
+        var places = Object.entries(gasObj);
+        for (var i = 0; i < finalstates.length; i++) {
+          var state = finalstates[i].replace(/ /gi, "_");
+          for (var g = 0; g < places.length; g++) {
+            if (state === places[g][0]) {
+              prices.push(places[g][1])
+            }
+          }
+        }
+        console.log(prices)
+        var arrPrices = [];
+        prices.forEach(function (x) {
+          var newp = x.slice(1);
+          console.log(newp)
+          arrPrices.push(newp)
+        })
+        var arrNum = arrPrices.map(Number);
+        console.log(arrNum)
+        var getAvg = array => array.reduce((prev, curr) => prev + curr) / array.length;
+        var avg = getAvg(arrNum);
+        var avgPrice = avg.toFixed(2);
+        console.log(avgPrice)
 
-      res.json({
-        cost: cost
+        res.json({
+          cost: cost,
+          states: finalstates,
+          gasprice: avgPrice
+        });
+
+
       });
+      
     });
 
   });
