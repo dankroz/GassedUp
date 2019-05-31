@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
     <script src="https://code.jquery.com/jquery.js"></script>
-	<script src="js/flightsAPI.js"></script>
-	<script src="js/index.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	 crossorigin="anonymous">
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type='text/javascript' src='js/config.js'></script>
+    <script src="js/flightsAPI.js"></script>
+    <script src="js/index.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
     <title>Gassed Up</title>
 </head>
+
 <body class="text-white">
     <nav class="navbar navbar-expand-md navbar-dark">
         <a class="navbar-brand pl-3" href="#"> <img src="./img/logo-color.png" height="50">
             <span class="brand">Gassed Up</span></a>
         <ul class="navbar-nav">
-			<li class="nav-item pr-2"><a class="nav-link" id="signin" href="/login">Sign In</a></li>
-			<li class="nav-item pr-2" ><a class="nav-link" id="logout" href="/logout">Log Out</a></li>
+            <li class="nav-item pr-2"><a class="nav-link" id="signin" href="/login">Sign In</a></li>
+            <li class="nav-item pr-2"><a class="nav-link" id="logout" href="/logout">Log Out</a></li>
         </ul>
         </div>
     </nav>
@@ -31,10 +34,10 @@
         <div class="tab-content mx-auto d-flex justify-content-center">
             <div class="">
                 <div class="row">
-                        <div class="col-sm-12 text-center mb-3">
-                                <h1>Gassed Up</h1>
-                                <h3 class="subtitle">Comparing travel costs for driving and flying to any destination.</h3>
-                            </div>
+                    <div class="col-sm-12 text-center mb-3">
+                        <h1>Gassed Up</h1>
+                        <h3 class="subtitle">Comparing travel costs for driving and flying to any destination.</h3>
+                    </div>
                     <div class="col-md-12 col-lg-4">
                         <div class="input-field">
                             <input type="text" class="form-control" id="start" placeholder="City Traveling From" />
@@ -46,10 +49,10 @@
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-4">
-                            <div class="input-field">
-                                <input type="text" class="form-control" id="mpg" placeholder="Car MPG" />
-                            </div>
+                        <div class="input-field">
+                            <input type="text" class="form-control" id="mpg" placeholder="Car MPG" />
                         </div>
+                    </div>
                     <div class="col-md-12 col-lg-4">
                         <div class="input-field">
                             <input type="text" class="form-control" id="startDate" placeholder="dd/mm/yyyy" />
@@ -61,25 +64,31 @@
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-4">
-                            <div class="input-field">
-                                <select class="form-control" id="passengers" style="border-radius: 25px!important;">
-                                    <option value="" disabled selected>Passengers</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                            </div>
+                        <div class="input-field">
+                            <select class="form-control" id="passengers" style="border-radius: 25px!important;">
+                                <option value="" disabled selected>Passengers</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
                         </div>
-                    <input class="mx-auto d-flex justify-content-center btn btn-info mt-4 mb-4" type="submit" id="submit">
                     </div>
-                    </div>
+                    <input class="mx-auto d-flex justify-content-center btn btn-info mt-4 mb-4" type="submit"
+                        id="submit">
                 </div>
             </div>
         </div>
     </div>
     </div>
-    
+    </div>
+    </div>
+
+    <div id="distance" style="display: none;"></div>
+    <div id="tolls" style="display: none;"></div>
+    <div id="gasprice" style="display: none;"></div>
+
+
     <div id="map"></div>
     <div id="directions-panel"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -126,66 +135,86 @@
                         summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
                         summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
                         var distance = route.legs[i].distance.text;
+                        $("#distance").append(distance)
+                        console.log($("#distance").text())
+                        sendDist(distance)
                         // console.log(distance);
                         summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
                     }
                 } else {
                     window.alert('Directions request failed due to ' + status);
                 }
+                console.log("inside function " + distance)
+
             });
         }
+        function sendDist(distance) {
+            $.post("/api/distance", {
+                distance: distance
+            }).then(function (res) {
+                console.log("come back to me baby" + res.distance)
+            })
+        };
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp-w7v8UE9I4dyGeMSrf_-f1R0wrdm9vI&callback=initMap">
-    </script>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp-w7v8UE9I4dyGeMSrf_-f1R0wrdm9vI&callback=initMap">
+        </script>
+    <br><br><br>
+    
+    <div id="roadtrip"></div>
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 <!-- start footer -->
 <footer>
-<section id="footer">
-    <div class="container">
-        <div class="row text-center text-xs-center text-sm-left text-md-left">
-            <div class="text-center col-xs-12 col-sm-4 col-md-4">
-                <h5>References</h5>
-                <ul class="list-unstyled quick-links">
-                    <li><a href="/"><i class="fa fa-angle-double-right"></i>Kajak</a></li>
-                    <li><a href="/"><i class="fa fa-angle-double-right"></i>AAA</a></li>
-                    <li><a href="/"><i class="fa fa-angle-double-right"></i>Cheerio</a></li>
-                    <!-- <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+    <section id="footer">
+        <div class="container">
+            <div class="row text-center text-xs-center text-sm-left text-md-left">
+                <div class="text-center col-xs-12 col-sm-4 col-md-4">
+                    <h5>References</h5>
+                    <ul class="list-unstyled quick-links">
+                        <li><a href="/"><i class="fa fa-angle-double-right"></i>Kajak</a></li>
+                        <li><a href="/"><i class="fa fa-angle-double-right"></i>AAA</a></li>
+                        <li><a href="/"><i class="fa fa-angle-double-right"></i>Cheerio</a></li>
+                        <!-- <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
                     <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Videos</a></li> -->
-                </ul>
-            </div>
-            <div class="text-center col-xs-12 col-sm-4 col-md-4">
-                <h5>Useful Links</h5>
-                <ul class="list-unstyled quick-links">
-                    <li><a href="/"><i class="fa fa-angle-double-right"></i>Skyscanner</a></li>
-                    <li><a href="/"><i class="fa fa-angle-double-right"></i>GasBuddy</a></li>
-                    <li><a href="/"><i class="fa fa-angle-double-right"></i>TripAdvisor</a></li>
-                    <!-- <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Gif Search</a></li> -->
-                    <!-- <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Videos</a></li> -->
-                </ul>
-            </div>
-            <div class="text-center col-xs-12 col-sm-4 col-md-4">
-                <h5>Navigation</h5>
-                <ul class="list-unstyled quick-links">
-                    <li><a href="/"><i class="fa fa-angle-double-right"></i>Search</a></li>
-                    <li><a href="/"><i class="fa fa-angle-double-right"></i>Map</a></li>
-                    <li><a href="/"><i class="fa fa-angle-double-right"></i>Results</a></li>
-                    <!-- <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+                    </ul>
+                </div>
+                <div class="text-center col-xs-12 col-sm-4 col-md-4">
+                    <h5>Useful Links</h5>
+                    <ul class="list-unstyled quick-links">
+                        <li><a href="/"><i class="fa fa-angle-double-right"></i>Skyscanner</a></li>
+                        <li><a href="/"><i class="fa fa-angle-double-right"></i>GasBuddy</a></li>
+                        <li><a href="/"><i class="fa fa-angle-double-right"></i>TripAdvisor</a></li>
+                        <!-- <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Gif Search</a></li> -->
+                        <!-- <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Videos</a></li> -->
+                    </ul>
+                </div>
+                <div class="text-center col-xs-12 col-sm-4 col-md-4">
+                    <h5>Navigation</h5>
+                    <ul class="list-unstyled quick-links">
+                        <li><a href="/"><i class="fa fa-angle-double-right"></i>Search</a></li>
+                        <li><a href="/"><i class="fa fa-angle-double-right"></i>Map</a></li>
+                        <li><a href="/"><i class="fa fa-angle-double-right"></i>Results</a></li>
+                        <!-- <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
                     <li><a href="https://wwwe.sunlimetech.com" title="Design and developed by"><i class="fa fa-angle-double-right"></i>Imprint</a></li> -->
-                </ul>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <br></br> <br></br>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
-            <p><u><a href="#">Gassed Up</a></u> website uses vectors and images that are free for public use. All material is
-                sourced from public datasets.</p>
-            <p class="h6">&copy All Rights Reserved.<a class="text-green ml-2" href="#" target="_blank">Gassed Up</a></p>
+        <br></br> <br></br>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                <p><u><a href="#">Gassed Up</a></u> website uses vectors and images that are free for public use. All
+                    material is
+                    sourced from public datasets.</p>
+                <p class="h6">&copy All Rights Reserved.<a class="text-green ml-2" href="#" target="_blank">Gassed
+                        Up</a></p>
+            </div>
         </div>
-    </div>
-    </div>
-</section>
+        </div>
+    </section>
 </footer>
 <!-- end footer -->
+
 </html>
