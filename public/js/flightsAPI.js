@@ -51,6 +51,9 @@ $(document).on("click", "#submit", function () {
             });
         })
     })
+    $('html, body').animate({
+        scrollTop: $("#divBreak").offset().top
+    }, 3000);
 })
 
 
