@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "hello",
+    "password": "Baddog28!",
     "database": "passport_demo",
     "host": "localhost",
     "port": 3306,
@@ -9,7 +9,7 @@
   },
   "test": {
     "username": "root",
-    "password": "",
+    "password": "Baddog28!",
     "database": "database_test",
     "host": "localhost",
     "port": 3306,

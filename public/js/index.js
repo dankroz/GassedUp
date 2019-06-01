@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  $.get("/api/user_data").then(function (data) {
+  $.get("/api/user_data").then(function(data) {
     if (data.email !== "undefined") {
       $("#signin").text(data.email);
       // $("#logout").style.display === "block";
@@ -10,8 +10,7 @@ $(document).ready(function () {
     }
   });
 
-
-  $("#submit").click(function (event) {
+  $("#submit").click(function(event) {
     event.preventDefault();
     console.log("hello");
     var trip = {
@@ -19,7 +18,6 @@ $(document).ready(function () {
       end: $("#end").val().trim(),
       tollkey: config.tollkey
     };
-
     calcTolls(trip.start, trip.end, trip.tollkey);
   });
 
@@ -35,23 +33,18 @@ $(document).ready(function () {
       $("#gasprice").append(res.gasprice);
       $("#tolls").append(res.cost);
 
-      var dist = parseFloat((($("#distance").text()).slice(0, -3)).replace(/,/g, ""))
+      var dist = parseInt((($("#distance").text()).slice(0, -3)).replace(/,/g, "")) * 2
       console.log(dist)
 
       var gallons = dist / parseFloat($("#mpg").val().trim())
       console.log(gallons)
 
-      
-
       var tripTotal = (gallons * parseFloat(res.gasprice)) + res.cost
       console.log("total road trip cost: $" + tripTotal);
 
-      $("#roadtrip").append("Total Road Trip Cost: $" + tripTotal);
-
+      $("#directions-panel").append("Total Road Trip Cost: $" + parseInt(tripTotal));
     });
   }
 
-  
- 
   // eslint-disable-next-line prettier/prettier
 });
